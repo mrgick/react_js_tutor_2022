@@ -1,43 +1,23 @@
-import logo from './logo.svg';
-import React, { Component, useState } from 'react';
-import Todo from './components/Todo/Todo';
-import { Navbar } from './components/Navbar/Navbar';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-// import 
+import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Todo } from "./routes/Todo/Todo";
+import { Navbar } from "./routes/Navbar/Navbar";
+import { Home } from "./routes/Home/Home";
 
-class App extends Component {
-
-  state = {
-    title: this.props?.title ? this.props.title : 'Default title'
-  }
-  
-
-  render(){
-    const {title} = this.state
-    return(
-      <>
+const App = (props) => {
+  return (
+    <>
       <Router>
-        <Navbar>
-          {/* <Todo /> */}
-        </Navbar>
+        <Navbar>{/* <Todo /> */}</Navbar>
         <Routes>
-          <Route path='/' element={<Home />}/>
-          <Route path='/todo' element={<Todo />}/>
-          <Route path='/users' element={<Home />}/>
-          <Route path='/account' element={<Home />}/>
+          <Route path="/" element={<Home />} />
+          <Route path="/todo" element={<Todo />} />
+          <Route path="/users" element={<Home />} />
+          <Route path="/account" element={<Home />} />
         </Routes>
       </Router>
-      </>
-    )
-  }
-  
-}
-
-const Home = ()=> {
-  return(
-    <>
-      <p>Home page</p>
     </>
-  )
-}
+  );
+};
+
 export default App;
