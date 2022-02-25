@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 
 export const useFetchdata = (operation = "users", user = "") => {
   const urlApi = useMemo(() => setUrlApi(operation, user));

@@ -1,5 +1,4 @@
 import { Button, Checkbox, List, Col, Input, Pagination } from "antd";
-import Item from "antd/lib/list/Item";
 import React, { useState, useEffect } from "react";
 import { useFetchdata } from "../../hooks/useFetchdata";
 
@@ -19,7 +18,7 @@ export const Todo = (props) => {
     let todo = JSON.parse(JSON.stringify(todoList));
 
     todo = todo.filter((item) => {
-      if (item.id == todoID) {
+      if (item.id === todoID) {
         item.completed = !item.completed;
       }
       return item;
@@ -31,7 +30,7 @@ export const Todo = (props) => {
     let todo = JSON.parse(JSON.stringify(todoList));
 
     todo = todo.filter((item) => {
-      if (item.id != todoID) return item;
+      if (item.id !== todoID) return item;
     });
     setTodoList(todo);
   };
