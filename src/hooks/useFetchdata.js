@@ -5,9 +5,7 @@ export const useFetchdata = (operation = "users", user = "Bret") => {
 
   function setUrlApi(operation, user) {
     const url = "https://mrgick.github.io/react_js_tutor_2022/api_exmaple/";
-    if (!(user)){
-      user='Bret'
-    }
+
     switch (operation) {
       case "todo":
         return url + "todos/" + user + ".json";
