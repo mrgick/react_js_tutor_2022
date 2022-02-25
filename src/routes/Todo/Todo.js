@@ -1,4 +1,5 @@
-import { Button, Checkbox, List, Col, Input, Pagination } from "antd";
+import { Button, Checkbox, List, Col, Input, Pagination, Space } from "antd";
+import {DeleteOutlined} from '@ant-design/icons';
 import React, { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useFetchdata } from "../../hooks/useFetchdata";
@@ -51,8 +52,8 @@ export const Todo = (props) => {
 
   return (
     <>
-      <Col span={8} style={{ margin: "0 auto" }}>
-        <h3>{searchParams.get("user")+"'s todo list"}</h3>
+      <Col span={8} style={{ margin: "0 auto", minWidth: "10em" }}>
+        <h3>{searchParams.get("user") + "'s todo list"}</h3>
         <List>
           <Input
             placeholder="Добавить todo в список"
@@ -67,14 +68,14 @@ export const Todo = (props) => {
                   textDecoration: item.completed ? "line-through" : "none",
                 }}
               >
-                <Checkbox
-                  onChange={() => handelerTodoChecked(item.id)}
-                  checked={item.completed ? true : false}
-                />
-                {item.title}
-                <Button onClick={() => handlerDeleteTodo(item.id)}>
-                  Удалить
-                </Button>
+                <Space>
+                  <Checkbox
+                    onChange={() => handelerTodoChecked(item.id)}
+                    checked={item.completed ? true : false}
+                  />
+                  <div style={{ minWidth: "6em" }}>{item.title}</div>
+                </Space>
+                <DeleteOutlined hover onClick={() => handlerDeleteTodo(item.id)}/>
               </List.Item>
             );
           })}

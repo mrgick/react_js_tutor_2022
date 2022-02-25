@@ -11,7 +11,7 @@ export const Navbar = (props) => {
   ]);
   return (
     <>
-      <Menu mode="horizontal">
+      <Menu mode="horizontal" selectable={false}>
         {nav.map(({ name, path }, index) => {
           return (
             <Menu.Item key={index}>

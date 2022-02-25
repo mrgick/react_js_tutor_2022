@@ -1,10 +1,8 @@
-import { Col, List, Button } from "antd";
+import { Col, List} from "antd";
 import React, { useEffect, useState } from "react";
 import { useFetchdata } from "../../hooks/useFetchdata";
-import { useNavigate } from "react-router-dom";
 
 export const Users = (props) => {
-  const navigate = useNavigate();
   const parsedUsersList = useFetchdata("users");
   const [usersList, setUsersList] = useState([]);
   useEffect(() => {
@@ -13,7 +11,7 @@ export const Users = (props) => {
 
   return (
     <>
-      <Col span={8} style={{ margin: "0 auto" }}>
+      <Col span={8} style={{ margin: "0 auto", minWidth: "10em"}}>
         <h3>Список пользователей</h3>
         <List
           dataSource={usersList}
