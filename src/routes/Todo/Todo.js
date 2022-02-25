@@ -1,9 +1,11 @@
 import { Button, Checkbox, List, Col, Input, Pagination } from "antd";
 import React, { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import { useFetchdata } from "../../hooks/useFetchdata";
 
 export const Todo = (props) => {
-  const parsedTodoList = useFetchdata("todo");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const parsedTodoList = useFetchdata("todo", searchParams.get("user"));
   const [todoList, setTodoList] = useState([]);
   const [curentPage, setCurentPage] = useState(1);
   const [perPage, setPerPage] = useState(10);
@@ -50,7 +52,7 @@ export const Todo = (props) => {
   return (
     <>
       <Col span={8} style={{ margin: "0 auto" }}>
-        <h3>13</h3>
+        <h3>{searchParams.get("user")+"'s todo list"}</h3>
         <List>
           <Input
             placeholder="Добавить todo в список"
@@ -76,15 +78,13 @@ export const Todo = (props) => {
               </List.Item>
             );
           })}
-          <Pagination
-            defaultCurrent={curentPage}
-            defaultPageSize={perPage}
-            total={todoList.length}
-            onChange={(page, pageSize) =>
-              handlerChangePagination(page, pageSize)
-            }
-          />
         </List>
+        <Pagination
+          defaultCurrent={curentPage}
+          defaultPageSize={perPage}
+          total={todoList.length}
+          onChange={(page, pageSize) => handlerChangePagination(page, pageSize)}
+        />
       </Col>
     </>
   );
