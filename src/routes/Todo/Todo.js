@@ -54,7 +54,7 @@ export const Todo = (props) => {
 
   return (
     <>
-      <Col span={8} style={{ margin: "0 auto", minWidth: "10em" }}>
+      <Col span={8} style={{ margin: "0 auto", minWidth: "18em" }}>
         <h3>{user + "'s todo list"}</h3>
         <List>
           <Input

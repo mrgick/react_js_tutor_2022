@@ -12,7 +12,7 @@ export const Users = (props) => {
 
   return (
     <>
-      <Col span={8} style={{ margin: "0 auto", minWidth: "10em" }}>
+      <Col span={8} style={{ margin: "0 auto", minWidth: "15em" }}>
         <h3>Список пользователей</h3>
         <List
           dataSource={usersList}
