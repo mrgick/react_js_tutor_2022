@@ -1,17 +1,18 @@
-import { Col, List} from "antd";
+import { Col, List } from "antd";
 import React, { useEffect, useState } from "react";
 import { useFetchdata } from "../../hooks/useFetchdata";
 
 export const Users = (props) => {
-  const parsedUsersList = useFetchdata("users");
+  const initialUsersList = useFetchdata("users");
   const [usersList, setUsersList] = useState([]);
+
   useEffect(() => {
-    parsedUsersList.then((res) => setUsersList(res));
-  }, []);
+    setUsersList(initialUsersList) 
+  }, [initialUsersList]);
 
   return (
     <>
-      <Col span={8} style={{ margin: "0 auto", minWidth: "10em"}}>
+      <Col span={8} style={{ margin: "0 auto", minWidth: "10em" }}>
         <h3>Список пользователей</h3>
         <List
           dataSource={usersList}

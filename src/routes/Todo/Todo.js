@@ -7,7 +7,7 @@ import { useFetchdata } from "../../hooks/useFetchdata";
 export const Todo = (props) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const user = searchParams.get("user") ? searchParams.get("user") : "Bret";
-  const parsedTodoList = useFetchdata("todo", user);
+  const initialTodoList = useFetchdata("todo", user);
   const [todoList, setTodoList] = useState([]);
   const [curentPage, setCurentPage] = useState(1);
   const [perPage, setPerPage] = useState(10);
@@ -15,8 +15,8 @@ export const Todo = (props) => {
   const beginList = endList - perPage;
 
   useEffect(() => {
-    parsedTodoList.then((res) => setTodoList(res));
-  }, []);
+    setTodoList(initialTodoList);
+  }, [initialTodoList]);
 
   const handelerTodoChecked = (todoID) => {
     let todo = JSON.parse(JSON.stringify(todoList));

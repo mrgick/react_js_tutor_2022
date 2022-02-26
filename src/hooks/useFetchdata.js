@@ -1,7 +1,8 @@
-import { useMemo } from "react";
+import { useMemo, useState, useEffect } from "react";
 
 export const useFetchdata = (operation = "users", user = "Bret") => {
   const urlApi = useMemo(() => setUrlApi(operation, user));
+  const [data, setData] = useState([]);
 
   function setUrlApi(operation, user) {
     const url = "https://mrgick.github.io/react_js_tutor_2022/api_exmaple/";
@@ -12,13 +13,19 @@ export const useFetchdata = (operation = "users", user = "Bret") => {
       case "users":
         return url + "users.json";
       default:
-        throw new Error();
+        return "";
     }
   }
 
-  return fetch(urlApi).then((res) =>
-    res.json().then((res) => {
-      return res;
-    })
-  );
+  useEffect(() => {
+    if (!urlApi) return;
+    const fetchData = async () => {
+      const response = await fetch(urlApi);
+      const data = await response.json();
+      setData(data);
+    };
+    fetchData();
+  }, [urlApi]);
+
+  return data;
 };
