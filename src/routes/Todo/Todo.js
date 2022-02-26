@@ -77,10 +77,7 @@ export const Todo = (props) => {
                   />
                   <div style={{ minWidth: "6em" }}>{item.title}</div>
                 </Space>
-                <DeleteOutlined
-                  hover
-                  onClick={() => handlerDeleteTodo(item.id)}
-                />
+                <DeleteOutlined onClick={() => handlerDeleteTodo(item.id)} />
               </List.Item>
             );
           })}
