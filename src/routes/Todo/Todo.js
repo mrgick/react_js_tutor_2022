@@ -1,4 +1,4 @@
-import { Button, Checkbox, List, Col, Input, Pagination, Space } from "antd";
+import { Checkbox, List, Col, Input, Pagination, Space } from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
 import React, { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
@@ -34,7 +34,8 @@ export const Todo = (props) => {
     let todo = JSON.parse(JSON.stringify(todoList));
 
     todo = todo.filter((item) => {
-      if (item.id !== todoID) return item;
+      if (item.id !== todoID) return true;
+      return false;
     });
     setTodoList(todo);
   };
