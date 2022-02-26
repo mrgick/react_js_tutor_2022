@@ -1,7 +1,7 @@
-import { useMemo, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 export const useFetchdata = (operation = "users", user = "Bret") => {
-  const urlApi = useMemo(() => setUrlApi(operation, user));
+  const urlApi = setUrlApi(operation, user);
   const [data, setData] = useState([]);
 
   function setUrlApi(operation, user) {
@@ -13,7 +13,7 @@ export const useFetchdata = (operation = "users", user = "Bret") => {
       case "users":
         return url + "users.json";
       default:
-        return "";
+        return null;
     }
   }
 
