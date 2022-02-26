@@ -44,7 +44,7 @@ export const Todo = (props) => {
     let defVariable = [
       { id: Math.random(), title: e.target.value, completed: false },
     ];
-    setTodoList([...todoList, ...defVariable]);
+    setTodoList([...defVariable, ...todoList]);
   };
 
   const handlerChangePagination = (page, pageSize) => {
