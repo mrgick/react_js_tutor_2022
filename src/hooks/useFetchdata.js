@@ -1,17 +1,17 @@
 import { useState, useEffect } from "react";
 
-export const useFetchdata = (operation = "users", user = "Bret") => {
-  const urlApi = setUrlApi(operation, user);
+export const useFetchdata = (operation = "users") => {
+  const urlApi = setUrlApi(operation);
   const [data, setData] = useState([]);
 
-  function setUrlApi(operation, user) {
-    const url = "https://mrgick.github.io/react_js_tutor_2022/api_exmaple/";
+  function setUrlApi(operation) {
+    const url = "https://jsonplaceholder.typicode.com/";
 
     switch (operation) {
       case "todo":
-        return url + "todos/" + user + ".json";
+        return url + "todos";
       case "users":
-        return url + "users.json";
+        return url + "users";
       default:
         return null;
     }

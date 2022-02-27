@@ -20,7 +20,7 @@ export const Users = (props) => {
             <List.Item key={item.id}>
               <List.Item.Meta
                 title={
-                  <a href={"#/todo?user=" + item.username}>
+                  <a href={"#/todo?userId=" + item.id}>
                     {item.username + "'s todo list"}
                   </a>
                 }

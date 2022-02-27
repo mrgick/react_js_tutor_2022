@@ -6,8 +6,8 @@ import { useFetchdata } from "../../hooks/useFetchdata";
 
 export const Todo = (props) => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const user = searchParams.get("user") ? searchParams.get("user") : "Bret";
-  const initialTodoList = useFetchdata("todo", user);
+  const userId = searchParams.get("userId") ? searchParams.get("userId") : "all";
+  const initialTodoList = useFetchdata("todo");
   const [todoList, setTodoList] = useState([]);
   const [curentPage, setCurentPage] = useState(1);
   const [perPage, setPerPage] = useState(10);
@@ -15,7 +15,18 @@ export const Todo = (props) => {
   const beginList = endList - perPage;
 
   useEffect(() => {
-    setTodoList(initialTodoList);
+    setTodoList(
+      initialTodoList.filter((value) => {
+        if (userId === "all") {
+          return true;
+        }
+        else if (value.userId === parseInt(userId)) {
+          return true;
+        } else {
+          return false;
+        }
+      })
+    );
   }, [initialTodoList]);
 
   const handelerTodoChecked = (todoID) => {
@@ -55,7 +66,7 @@ export const Todo = (props) => {
   return (
     <>
       <Col span={8} style={{ margin: "0 auto", minWidth: "18em" }}>
-        <h3>{user + "'s todo list"}</h3>
+        <h3>{"userId: "+userId}</h3>
         <List>
           <Input
             placeholder="Добавить todo в список"
