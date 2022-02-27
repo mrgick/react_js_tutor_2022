@@ -27,7 +27,7 @@ export const Todo = (props) => {
         }
       })
     );
-  }, [initialTodoList]);
+  }, [initialTodoList, userId]);
 
   const handelerTodoChecked = (todoID) => {
     let todo = JSON.parse(JSON.stringify(todoList));
